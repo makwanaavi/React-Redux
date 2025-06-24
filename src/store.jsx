@@ -35,8 +35,15 @@ console.log(store)
 // console.log("First", store.getState())
 
 
+const addTask = (data) => {
+    return { type: ADD_TASK, payload: data }
+}
+const deleteTask = (id) => {
+    return { type: DELETE_TASK, payload: id }
+}
 
-store.dispatch({ type: ADD_TASK, payload: "Add First Data in Store!" })
+store.dispatch(addTask("Hello"))
+store.dispatch(deleteTask(1))
 console.log("First", store.getState())
 
 
@@ -44,5 +51,6 @@ store.dispatch({ type: ADD_TASK, payload: "Add Second Data !" })
 console.log("Second", store.getState())
 
 
-store.dispatch({ type: DELETE_TASK, payload: 1 })
+store.dispatch(deleteTask(1))
 console.log("Third", store.getState())
+
