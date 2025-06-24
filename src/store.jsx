@@ -30,7 +30,8 @@ const taskReducer = (state = initialState, action) => {
     }
 }
 
-export const store = createStore(taskReducer);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : undefined;
+export const store = createStore(taskReducer, composeEnhancers);
 console.log(store)
 // console.log("First", store.getState())
 
@@ -52,8 +53,8 @@ store.dispatch({ type: ADD_TASK, payload: "Second Data !" })
 console.log("Second", store.getState())
 
 
-store.dispatch({type : ADD_TASK, payload : "Third Task"})
-console.log("Third", store.getState() )
+store.dispatch({ type: ADD_TASK, payload: "Third Task" })
+console.log("Third", store.getState())
 
 // store.dispatch(deleteTask())
 // console.log("Third", store.getState())
