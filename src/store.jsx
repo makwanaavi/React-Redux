@@ -42,15 +42,18 @@ const deleteTask = (id) => {
     return { type: DELETE_TASK, payload: id }
 }
 
-store.dispatch(addTask("Hello"))
-store.dispatch(deleteTask(1))
+store.dispatch(addTask("First Data"))
+// store.dispatch(deleteTask())
+
 console.log("First", store.getState())
 
 
-store.dispatch({ type: ADD_TASK, payload: "Add Second Data !" })
+store.dispatch({ type: ADD_TASK, payload: "Second Data !" })
 console.log("Second", store.getState())
 
 
-store.dispatch(deleteTask(1))
-console.log("Third", store.getState())
+store.dispatch({type : ADD_TASK, payload : "Third Task"})
+console.log("Third", store.getState() )
 
+// store.dispatch(deleteTask())
+// console.log("Third", store.getState())
