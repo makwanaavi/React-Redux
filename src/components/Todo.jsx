@@ -1,21 +1,17 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 function Todo() {
-    const [tasks1, setTasks] = useState([]);
     const [input, setInput] = useState("");
+    const dispatch = useDispatch();
+    const tasks = useSelector((state) => state.task);
 
-    const handleAddTask = () => {   
+    const handleAddTask = () => {
         if (input.trim() !== "") {
-            setTasks([...tasks1, input]);
+            dispatch({ type: "task/add", payload: input });
             setInput("");
         }
     };
-
-    const tasks = useSelector((state) => state.task);
-    // console.log(state.task)
-
-
 
     return (
         <div>
@@ -27,10 +23,13 @@ function Todo() {
                 placeholder="Add a new task"
             />
             <button onClick={handleAddTask}>Add Task</button>
-            <ul>
-                {tasks.map((curTask , index) =>{
-                    return <li key={index}>
+            <ul >
+                {tasks.map((curTask, index) => {
+                    return <li style={{display:"flex"}} key={index}>
                         <p>{index} : {curTask}</p>
+                        <button style={{marginLeft:"10px"}} onClick={() => dispatch({ type: "task/delete", payload: index })}>
+                            Delete
+                        </button>
                     </li>
                 })}
             </ul>

@@ -5,9 +5,8 @@ function App() {
   return (
     <>
     <Todo/>
-      <h1>Hello redux</h1>
     </>
-  );
+  );  
 }
 
 export default App;
