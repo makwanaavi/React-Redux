@@ -1,15 +1,21 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
 
 function Todo() {
-    const [tasks, setTasks] = useState([]);
+    const [tasks1, setTasks] = useState([]);
     const [input, setInput] = useState("");
 
-    const handleAddTask = () => {
+    const handleAddTask = () => {   
         if (input.trim() !== "") {
-            setTasks([...tasks, input]);
+            setTasks([...tasks1, input]);
             setInput("");
         }
     };
+
+    const tasks = useSelector((state) => state.task);
+    // console.log(state.task)
+
+
 
     return (
         <div>
@@ -22,9 +28,11 @@ function Todo() {
             />
             <button onClick={handleAddTask}>Add Task</button>
             <ul>
-                {tasks.map((task, idx) => (
-                    <li key={idx}>{task}</li>
-                ))}
+                {tasks.map((curTask , index) =>{
+                    return <li key={index}>
+                        <p>{index} : {curTask}</p>
+                    </li>
+                })}
             </ul>
         </div>
     )
