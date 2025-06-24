@@ -39,6 +39,7 @@ console.log(store)
 const addTask = (data) => {
     return { type: ADD_TASK, payload: data }
 }
+// eslint-disable-next-line no-unused-vars
 const deleteTask = (id) => {
     return { type: DELETE_TASK, payload: id }
 }
